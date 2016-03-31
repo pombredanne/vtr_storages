@@ -1,0 +1,4 @@
+VTR Storages
+============
+
+Storages collection
