@@ -1,9 +1,22 @@
 import datetime
 from StringIO import StringIO
+
 import dateutil.parser
 import pytz
+
 from vtr_storages.storages import AbstractStorage
 
+
+def create_redis(*args, **kwargs):
+    import redis
+    return redis.StrictRedis(*args, **kwargs)
+
+
+class KVDB(object):
+    def __init__(self, redis_connection=None, *args, **kwargs):
+        if redis_connection is None:
+            redis_connection = create_redis(*args, **kwargs)
+        self.conn = redis_connection
 
 class Storage(AbstractStorage):
     """KVDB Interface like in zato
