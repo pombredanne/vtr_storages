@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 package = 'vtr_storages'
 
-version = "0.1.0"
+version = "0.1.1"
 packages = find_packages()
 
 def get_package_data(package):
