@@ -109,7 +109,8 @@ class Storage(AbstractStorage):
     def _open(self, name, mode):
         self.update_accessed_datetime(name)
         data = self.kvdb.conn.get(self.path(name))
-        data = data.decode(encoding='utf8')
+        if isinstance(data, unicode):
+            data = data.decode(encoding='utf8')
         return StringIO(data)
 
     def exists(self, name):
